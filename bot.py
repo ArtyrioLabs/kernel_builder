@@ -16,7 +16,6 @@ from dotenv import load_dotenv
 import requests
 import psutil
 
-# Настройка логирования
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO,
@@ -27,20 +26,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Загрузка переменных окружения
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 ESP_IP = os.getenv("ESP_IP")
-MAX_LOG_FILES = 10  # Максимальное количество хранимых логов
+MAX_LOG_FILES = 10
 
-# Конфигурация путей
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_DIR = os.path.join(PROJECT_DIR, "logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 
 def cleanup_old_logs():
-    """Удаление старых логов, сохраняя только MAX_LOG_FILES последних"""
     try:
         logs = sorted(os.listdir(LOG_DIR))
         while len(logs) > MAX_LOG_FILES:
@@ -49,7 +45,6 @@ def cleanup_old_logs():
         logger.error(f"Error cleaning logs: {e}")
 
 def send_to_esp8266(message: str):
-    """Отправка текста на LCD через ESP8266 с повторными попытками"""
     max_retries = 3
     for attempt in range(max_retries):
         try:
@@ -65,7 +60,6 @@ def send_to_esp8266(message: str):
     return False
 
 async def setup_commands(application):
-    """Настройка меню команд бота"""
     commands = [
         BotCommand("start", "Запустить бота"),
         BotCommand("build", "Запустить сборку ядра"),
@@ -73,12 +67,11 @@ async def setup_commands(application):
         BotCommand("logs", "Получить список логов"),
         BotCommand("clean", "Очистить старые логи"),
         BotCommand("help", "Показать справку"),
-        BotCommand("restart", "Перезапустить бота")  # Новая команда
+        BotCommand("restart", "Перезапустить бота")  
     ]
     await application.bot.set_my_commands(commands)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обработчик команды /start"""
     welcome_msg = (
         "🔧 *Build Monitor Bot*\n\n"
         "Доступные команды:\n"
@@ -86,14 +79,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/status - Проверить статус системы\n"
         "/logs - Получить список логов\n"
         "/clean - Очистить старые логи\n"
-        "/restart - Перезапустить бота\n"  # Добавлено в меню
+        "/restart - Перезапустить бота\n"  
         "/help - Показать справку"
     )
     await update.message.reply_text(welcome_msg, parse_mode='Markdown')
     send_to_esp8266("Bot Ready")
 
 async def build_kernel(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обработчик команды /build"""
     user = update.effective_user
     logger.info(f"Build requested by {user.full_name} (ID: {user.id})")
     
@@ -164,7 +156,6 @@ async def build_kernel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         cleanup_old_logs()
 
 async def list_logs(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обработчик команды /logs"""
     try:
         logs = sorted(os.listdir(LOG_DIR), reverse=True)
         if not logs:
@@ -181,7 +172,6 @@ async def list_logs(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"⚠️ Ошибка при получении списка логов: {e}")
 
 async def clean_logs(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обработчик команды /clean"""
     try:
         logs = sorted(os.listdir(LOG_DIR))
         if len(logs) <= MAX_LOG_FILES:
@@ -198,16 +188,13 @@ async def clean_logs(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"⚠️ Ошибка при очистке логов: {e}")
 
 async def system_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Упрощённая команда /status без статистики диска"""
     try:
-        # Проверка ESP8266
         esp_online = False
         try:
             esp_online = requests.get(f"http://{ESP_IP}", timeout=3).ok
         except:
             pass
         
-        # Только CPU и память
         cpu_usage = psutil.cpu_percent()
         mem = psutil.virtual_memory()
         uptime = subprocess.check_output(["uptime"]).decode().strip()
@@ -217,7 +204,7 @@ async def system_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"*ESP8266:* {'🟢 Online' if esp_online else '🔴 Offline'}\n"
             f"*CPU:* {cpu_usage}%\n"
             f"*Memory:* {mem.percent}% used\n"
-            f"*Uptime:* {uptime.split(',')[0]}"  # Только время работы
+            f"*Uptime:* {uptime.split(',')[0]}" 
         )
         await update.message.reply_text(status_msg, parse_mode='Markdown')
         send_to_esp8266("Status Checked")
@@ -225,13 +212,11 @@ async def system_status(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"⚠️ Ошибка проверки статуса: {e}")
 
 async def restart_bot(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Новая команда для перезапуска бота"""
     await update.message.reply_text("🔄 *Перезапускаю бота...*", parse_mode='Markdown')
     send_to_esp8266("Restarting...")
     os.execv(__file__, sys.argv)
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Обновлённая справка без упоминания диска"""
     help_text = (
         "📚 *Справка по боту*\n\n"
         "*/build* - Запустить сборку ядра\n"
@@ -244,19 +229,17 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(help_text, parse_mode='Markdown')
 
 def main():
-    """Запуск бота с новыми командами"""
     application = ApplicationBuilder() \
         .token(BOT_TOKEN) \
         .post_init(setup_commands) \
         .build()
     
-    # Регистрация обработчиков
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("build", build_kernel))
     application.add_handler(CommandHandler("status", system_status))
     application.add_handler(CommandHandler("logs", list_logs))
     application.add_handler(CommandHandler("clean", clean_logs))
-    application.add_handler(CommandHandler("restart", restart_bot))  # Новая команда
+    application.add_handler(CommandHandler("restart", restart_bot))  
     application.add_handler(CommandHandler("help", help_command))
     
     logger.info("Bot starting...")
