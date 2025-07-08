@@ -4,13 +4,11 @@ set -euo pipefail
 maindir="$(cd "$(dirname "$0")" && pwd)"
 patchesdir="${maindir}/patches"
 
-# Применяем все патчи из папки patches
 for patch_file in "$patchesdir"/*.patch; do
   echo "Applying patch: $(basename "$patch_file")"
   patch -p1 < "$patch_file"
 done
 
-# Сборка ядра
 export ARCH=arm64
 export CC=clang
 export CROSS_COMPILE=aarch64-linux-gnu-
