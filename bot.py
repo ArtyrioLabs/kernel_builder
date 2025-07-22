@@ -87,7 +87,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(welcome_msg, parse_mode='Markdown')
     send_to_esp8266("Bot Ready")
 
-# --- Глобальная переменная для процесса сборки ---
 build_process = None
 
 async def build_kernel(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -127,7 +126,6 @@ async def build_kernel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if build_process.returncode == 0:
             await update.message.reply_text("✅ *Сборка завершена успешно!*", parse_mode='Markdown')
             send_to_esp8266("Build Success")
-            # --- Отправка архива прошивки ядра ---
             zip_msg = await pack_and_send_zip(context, update, kernel_name, image_path)
             await update.message.reply_text(zip_msg, parse_mode='Markdown')
             send_to_esp8266("Zip OK")
