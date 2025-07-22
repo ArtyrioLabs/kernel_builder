@@ -10,7 +10,6 @@ CPU_CORES=$(nproc)
 kernel_base_name="niigo_kernel"
 DEFCONFIG="blossom_defconfig"
 
-# Правильный путь к KernelSU(-Next)
 KSU_NEXT_DIR="${KERNEL_DIR}/KernelSU-Next"
 KSU_DIR="${KERNEL_DIR}/KernelSU"
 
@@ -69,7 +68,6 @@ echo "Configuring kernel..."
 cd "$KERNEL_DIR"
 make O="$OUT_DIR" $DEFCONFIG
 
-# Переименование ядра через CONFIG_LOCALVERSION
 config_file="$OUT_DIR/.config"
 if grep -q '^CONFIG_LOCALVERSION=' "$config_file"; then
     sed -i "s/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=\"-${kernel_name}\"/" "$config_file"
