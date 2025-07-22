@@ -1,0 +1,553 @@
+Using kernel name: niigo_kernel_ksu-next_829748
+Checking dependencies...
+Cleaning previous build...
+Applying patches from: /home/artur/niigo_kernel_xiaomi_blossom/kernel_builder/patches
+Applying: 0001-fs-exec-add-ksu-execveat-hook.patch
+Already applied: 0001-fs-exec-add-ksu-execveat-hook.patch
+Applying: 0002-fs-open-add-ksu-faccessat-hook.patch
+Already applied: 0002-fs-open-add-ksu-faccessat-hook.patch
+Applying: 0003-fs-read_write-add-ksu-vfs_read-hook.patch
+Already applied: 0003-fs-read_write-add-ksu-vfs_read-hook.patch
+Applying: 0004-fs-stat-add-ksu-vfs_statx-hook.patch
+Already applied: 0004-fs-stat-add-ksu-vfs_statx-hook.patch
+Applying: 0005-drivers-input-input-add-ksu-input_handle_event-hook.patch
+Already applied: 0005-drivers-input-input-add-ksu-input_handle_event-hook.patch
+Configuring kernel...
+CONFIG_LOCALVERSION set to: CONFIG_LOCALVERSION="-niigo_kernel_ksu-next_829748"
+Optimizing config...
+Building kernel with 4 cores...
+arch/arm64/Makefile:27: ld does not support --fix-cortex-a53-843419; kernel may be susceptible to erratum
+scripts/kconfig/conf -s --syncconfig Kconfig
+arch/arm64/Makefile:27: ld does not support --fix-cortex-a53-843419; kernel may be susceptible to erratum
+for i in ../arch/arm64/boot/dts/mediatek/dandelion.dts; do \
+	base_prj=`grep -m 1 '#include [<\"].*\/cust\.dtsi[>\"]' $i | sed 's/#include [<"]//g'\
+       	| sed 's/\/cust\.dtsi[>"]//g' | sed 's/\/\*//g' | sed 's/\*\///g' | sed 's/ //g'`\
+	prj_path=./arch/arm64/boot/dts/$base_prj ;\
+	dws_path=../drivers/misc/mediatek/dws/mt6765/$base_prj.dws ;\
+	if [ -f $dws_path ] ; then \
+		mkdir -p $prj_path ;\
+		 ../tools/dct/DrvGen.py $dws_path $prj_path $prj_path cust_dtsi;\
+	fi \
+done
+for i in ../arch/arm64/boot/dts/mediatek/dandelion.dts; do \
+	base_prj=`grep -m 1 '#include [<\"].*\/cust\.dtsi[>\"]' $i | sed 's/#include [<"]//g'\
+       	| sed 's/\/cust\.dtsi[>"]//g' | sed 's/\/\*//g' | sed 's/\*\///g' | sed 's/ //g'`\
+	prj_path=./arch/arm64/boot/dts/$base_prj ;\
+	dws_path=../drivers/misc/mediatek/dws/mt6765/$base_prj.dws ;\
+	if [ -f $dws_path ] ; then \
+		mkdir -p $prj_path ;\
+		 ../tools/dct/DrvGen.py $dws_path $prj_path $prj_path cust_dtsi;\
+	fi \
+done
+grep: предупреждение: stray \ before /
+grep: предупреждение: stray \ before /
+rm -f dtboimg.cfg.tmp
+echo /home/artur/niigo_kernel_xiaomi_blossom/out/arch/arm64/boot/dts/mediatek/dandelion.dtb >>dtboimg.cfg.tmp; echo " id=0" >>dtboimg.cfg.tmp; 
+touch dtboimg.cfg.tmp
+if ! cmp -s dtboimg.cfg.tmp dtboimg.cfg; then \
+	mv dtboimg.cfg.tmp dtboimg.cfg; \
+else \
+	rm dtboimg.cfg.tmp; \
+fi
+rm -f dtbimg.cfg.tmp
+echo /home/artur/niigo_kernel_xiaomi_blossom/out/arch/arm64/boot/mtk.dtb >>dtbimg.cfg.tmp; echo " id=0" >>dtbimg.cfg.tmp; 
+touch dtbimg.cfg.tmp
+if ! cmp -s dtbimg.cfg.tmp dtbimg.cfg; then \
+	mv dtbimg.cfg.tmp dtbimg.cfg; \
+else \
+	rm dtbimg.cfg.tmp; \
+fi
+../scripts/extract-cert.c:46:14: warning: 'ERR_get_error_line' is deprecated [-Wdeprecated-declarations]
+   46 |         while ((e = ERR_get_error_line(&file, &line))) {
+      |                     ^
+/usr/include/openssl/err.h:422:1: note: 'ERR_get_error_line' has been explicitly marked deprecated here
+  422 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:59:9: warning: 'ERR_get_error_line' is deprecated [-Wdeprecated-declarations]
+   59 |         while (ERR_get_error_line(&file, &line)) {}
+      |                ^
+/usr/include/openssl/err.h:422:1: note: 'ERR_get_error_line' has been explicitly marked deprecated here
+  422 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:124:3: warning: 'ENGINE_load_builtin_engines' is deprecated [-Wdeprecated-declarations]
+  124 |                 ENGINE_load_builtin_engines();
+      |                 ^
+/usr/include/openssl/engine.h:358:1: note: 'ENGINE_load_builtin_engines' has been explicitly marked deprecated here
+  358 | OSSL_DEPRECATEDIN_3_0 void ENGINE_load_builtin_engines(void);
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:126:7: warning: 'ENGINE_by_id' is deprecated [-Wdeprecated-declarations]
+  126 |                 e = ENGINE_by_id("pkcs11");
+      |                     ^
+/usr/include/openssl/engine.h:336:1: note: 'ENGINE_by_id' has been explicitly marked deprecated here
+  336 | OSSL_DEPRECATEDIN_3_0 ENGINE *ENGINE_by_id(const char *id);
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:128:7: warning: 'ENGINE_init' is deprecated [-Wdeprecated-declarations]
+  128 |                 if (ENGINE_init(e))
+      |                     ^
+/usr/include/openssl/engine.h:620:1: note: 'ENGINE_init' has been explicitly marked deprecated here
+  620 | OSSL_DEPRECATEDIN_3_0 int ENGINE_init(ENGINE *e);
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:133:9: warning: 'ENGINE_ctrl_cmd_string' is deprecated [-Wdeprecated-declarations]
+  133 |                         ERR(!ENGINE_ctrl_cmd_string(e, "PIN", key_pass, 0), "Set PKCS#11 PIN");
+      |                              ^
+/usr/include/openssl/engine.h:478:1: note: 'ENGINE_ctrl_cmd_string' has been explicitly marked deprecated here
+  478 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:134:3: warning: 'ENGINE_ctrl_cmd' is deprecated [-Wdeprecated-declarations]
+  134 |                 ENGINE_ctrl_cmd(e, "LOAD_CERT_CTRL", 0, &parms, NULL, 1);
+      |                 ^
+/usr/include/openssl/engine.h:450:1: note: 'ENGINE_ctrl_cmd' has been explicitly marked deprecated here
+  450 | OSSL_DEPRECATEDIN_3_0 int ENGINE_ctrl_cmd(ENGINE *e, const char *cmd_name,
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+7 warnings generated.
+../scripts/mkcompile_h: line 66: ld.lld: command not found
+../fs/kernfs/file.c:273:16: warning: stack frame size (4176) exceeds limit (2800) in 'kernfs_fop_write' [-Wframe-larger-than]
+  273 | static ssize_t kernfs_fop_write(struct file *file, const char __user *user_buf,
+      |                ^
+1 warning generated.
+../drivers/cpuidle/governors/mtk_menu.c:52:16: warning: unused variable 'flags' [-Wunused-variable]
+   52 |         unsigned long flags = 0;
+      |                       ^~~~~
+../drivers/cpuidle/governors/mtk_menu.c:80:16: warning: unused variable 'flags' [-Wunused-variable]
+   80 |         unsigned long flags = 0;
+      |                       ^~~~~
+../drivers/cpuidle/governors/mtk_menu.c:712:16: warning: unused variable 'flags' [-Wunused-variable]
+  712 |         unsigned long flags = 0;
+      |                       ^~~~~
+3 warnings generated.
+../fs/read_write.c:446:10: warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+  446 |         ssize_t ret;
+      |                 ^
+1 warning generated.
+../fs/exec.c:1743:8: warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+ 1743 |         char *pathbuf = NULL;
+      |               ^
+1 warning generated.
+../fs/namespace.c:3037:3: warning: misleading indentation; statement is not part of the previous 'if' [-Wmisleading-indentation]
+ 3037 |                 mnt_flags |= MNT_NOATIME;
+      |                 ^
+../fs/namespace.c:3034:2: note: previous statement is here
+ 3034 |         if (flags & MS_NOEXEC)
+      |         ^
+1 warning generated.
+../drivers/gpu/mediatek/ged/src/ged_notify_sw_vsync.c:61:33: warning: unused variable 'g_psDumpFW' [-Wunused-variable]
+   61 | static struct workqueue_struct *g_psDumpFW;
+      |                                 ^~~~~~~~~~
+1 warning generated.
+../drivers/gpu/mediatek/ged/src/ged_kpi.c:48:9: warning: 'GED_TAG' macro redefined [-Wmacro-redefined]
+   48 | #define GED_TAG "[GED_KPI]"
+      |         ^
+../drivers/gpu/mediatek/ged/include/ged_base.h:12:9: note: previous definition is here
+   12 | #define GED_TAG "[GPU/GED]"
+      |         ^
+1 warning generated.
+../fs/d_path.c:419:1: warning: stack frame size (4224) exceeds limit (2800) in '__arm64_sys_getcwd' [-Wframe-larger-than]
+  419 | SYSCALL_DEFINE2(getcwd, char __user *, buf, unsigned long, size)
+      | ^
+../include/linux/syscalls.h:215:36: note: expanded from macro 'SYSCALL_DEFINE2'
+  215 | #define SYSCALL_DEFINE2(name, ...) SYSCALL_DEFINEx(2, _##name, __VA_ARGS__)
+      |                                    ^
+../include/linux/syscalls.h:225:2: note: expanded from macro 'SYSCALL_DEFINEx'
+  225 |         __SYSCALL_DEFINEx(x, sname, __VA_ARGS__)
+      |         ^
+../arch/arm64/include/asm/syscall_wrapper.h:56:18: note: expanded from macro '__SYSCALL_DEFINEx'
+   56 |         asmlinkage long __arm64_sys##name(const struct pt_regs *regs)           \
+      |                         ^
+<scratch space>:84:1: note: expanded from here
+   84 | __arm64_sys_getcwd
+      | ^
+1 warning generated.
+/bin/sh: строка 1: ld.lld: command not found
+make[3]: *** [../scripts/Makefile.build:567: arch/arm64/lib/lib-ksyms.o] Ошибка 127
+make[2]: *** [/home/artur/niigo_kernel_xiaomi_blossom/Makefile:1181: arch/arm64/lib] Ошибка 2
+make[2]: *** Ожидание завершения заданий…
+../net/core/filter.c:2835:12: warning: unused function '__bpf_skb_max_len' [-Wunused-function]
+ 2835 | static u32 __bpf_skb_max_len(const struct sk_buff *skb)
+      |            ^~~~~~~~~~~~~~~~~
+In file included from ../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:10:
+../drivers/gpu/mediatek/gpufreq/include/mtk_gpufreq.h:38:16: warning: redefinition of typedef 'gpufreq_power_limit_notify' is a C11 feature [-Wtypedef-redefinition]
+   38 | typedef void (*gpufreq_power_limit_notify)(unsigned int); /* legacy */
+      |                ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.h:73:16: note: previous definition is here
+   73 | typedef void (*gpufreq_power_limit_notify)(unsigned int);
+      |                ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:216:6: warning: variable 'buck_state' set but not used [-Wunused-but-set-variable]
+  216 |         int buck_state;
+      |             ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:84:19: warning: unused variable 'gpu_bottom_freq' [-Wunused-variable]
+   84 | static IMG_UINT32 gpu_bottom_freq;
+      |                   ^~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:86:19: warning: unused variable 'gpu_cust_boost_freq' [-Wunused-variable]
+   86 | static IMG_UINT32 gpu_cust_boost_freq;
+      |                   ^~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:88:19: warning: unused variable 'gpu_cust_upbound_freq' [-Wunused-variable]
+   88 | static IMG_UINT32 gpu_cust_upbound_freq;
+      |                   ^~~~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:93:19: warning: unused variable 'gpu_dvfs_force_idle' [-Wunused-variable]
+   93 | static IMG_UINT32 gpu_dvfs_force_idle;
+      |                   ^~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:97:19: warning: unused variable 'gpu_loading' [-Wunused-variable]
+   97 | static IMG_UINT32 gpu_loading;
+      |                   ^~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:98:19: warning: unused variable 'gpu_block' [-Wunused-variable]
+   98 | static IMG_UINT32 gpu_block;
+      |                   ^~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:99:19: warning: unused variable 'gpu_idle' [-Wunused-variable]
+   99 | static IMG_UINT32 gpu_idle;
+      |                   ^~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:374:13: warning: unused function 'MTKFreqInputBoostCB' [-Wunused-function]
+  374 | static void MTKFreqInputBoostCB(unsigned int ui32BoostFreqID)
+      |             ^~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:568:17: warning: unused function 'MTKGpuDVFSPolicy' [-Wunused-function]
+  568 | static IMG_BOOL MTKGpuDVFSPolicy(IMG_UINT32 ui32GPULoading,
+      |                 ^~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:762:13: warning: unused function 'MTKFakeGpuLoading' [-Wunused-function]
+  762 | static void MTKFakeGpuLoading(unsigned int *pui32Loading,
+      |             ^~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:937:19: warning: unused function 'mtk_mfg_async_init' [-Wunused-function]
+  937 | static int __init mtk_mfg_async_init(void)
+      |                   ^~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:947:19: warning: unused function 'mtk_mfg_2d_init' [-Wunused-function]
+  947 | static int __init mtk_mfg_2d_init(void)
+      |                   ^~~~~~~~~~~~~~~
+14 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/common/env/linux/dma_support.c:400:9: warning: variable 'uiSize' set but not used [-Wunused-but-set-variable]
+  400 |         size_t uiSize;
+      |                ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxhwperf.c:3618:15: warning: variable 'ui32TlPackets' set but not used [-Wunused-but-set-variable]
+ 3618 |         IMG_UINT32                      ui32TlPackets = 0;
+      |                                         ^
+1 warning generated.
+../fs/binfmt_elf.c:709:12: warning: stack frame size (4448) exceeds limit (2800) in 'load_elf_binary' [-Wframe-larger-than]
+  709 | static int load_elf_binary(struct linux_binprm *bprm)
+      |            ^
+1 warning generated.
+In file included from ../fs/compat_binfmt_elf.c:131:
+../fs/binfmt_elf.c:709:12: warning: stack frame size (4432) exceeds limit (2800) in 'load_elf_binary' [-Wframe-larger-than]
+  709 | static int load_elf_binary(struct linux_binprm *bprm)
+      |            ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxmem.c:85:3: warning: redefinition of typedef 'SERVER_MMU_CONTEXT' is a C11 feature [-Wtypedef-redefinition]
+   85 | } SERVER_MMU_CONTEXT;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxmem.h:67:37: note: previous definition is here
+   67 | typedef struct _SERVER_MMU_CONTEXT_ SERVER_MMU_CONTEXT;
+      |                                     ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxccb.c:2482:19: warning: variable 'pvPtr' set but not used [-Wunused-but-set-variable]
+ 2482 |         volatile void                   *pvPtr;
+      |                                          ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxlayer_impl.c:743:11: warning: variable 'bSubTestPassed' set but not used [-Wunused-but-set-variable]
+  743 |         IMG_BOOL bSubTestPassed = IMG_FALSE;
+      |                  ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxtdmtransfer.c:489:13: warning: variable 'ui32CmdOffset' set but not used [-Wunused-but-set-variable]
+  489 |         IMG_UINT32 ui32CmdOffset = 0;
+      |                    ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxta3d.c:1762:22: warning: variable 'psDevInfo' set but not used [-Wunused-but-set-variable]
+ 1762 |         PVRSRV_RGXDEV_INFO *psDevInfo;
+      |                             ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxta3d.c:4143:22: warning: variable 'pauiClientTAIntUpdateUFOAddress' set but not used [-Wunused-but-set-variable]
+ 4143 |                 PRGXFWIF_UFO_ADDR       *pauiClientTAIntUpdateUFOAddress = NULL;
+      |                                          ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxta3d.c:4144:22: warning: variable 'pauiClient3DIntUpdateUFOAddress' set but not used [-Wunused-but-set-variable]
+ 4144 |                 PRGXFWIF_UFO_ADDR       *pauiClient3DIntUpdateUFOAddress = NULL;
+      |                                          ^
+3 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxsrvinit.c:305:32: warning: variable 'bAXIACELite' set but not used [-Wunused-but-set-variable]
+  305 |         IMG_BOOL bE42606 = IMG_FALSE, bAXIACELite = IMG_FALSE;
+      |                                       ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxsrvinit.c:1278:11: warning: variable 'bAnyLogGroupConfigured' set but not used [-Wunused-but-set-variable]
+ 1278 |         IMG_BOOL bAnyLogGroupConfigured;
+      |                  ^
+2 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/devicemem_history_server.c:671:21: warning: variable 'psAlloc' set but not used [-Wunused-but-set-variable]
+  671 |         RECORD_ALLOCATION *psAlloc;
+      |                            ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:181:3: warning: redefinition of typedef '_SYNC_CHECKPOINT_CONTEXT_CTL' is a C11 feature [-Wtypedef-redefinition]
+  181 | } _SYNC_CHECKPOINT_CONTEXT_CTL;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/include/sync_checkpoint_internal.h:65:46: note: previous definition is here
+   65 | typedef struct _SYNC_CHECKPOINT_CONTEXT_CTL_ _SYNC_CHECKPOINT_CONTEXT_CTL, *_PSYNC_CHECKPOINT_CONTEXT_CTL;
+      |                                              ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:1098:11: warning: variable 'iRf2' set but not used [-Wunused-but-set-variable]
+ 1098 |                 IMG_INT iRf2 = 0;
+      |                         ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:2906:33: warning: variable 'ui32NullScpCount' set but not used [-Wunused-but-set-variable]
+ 2906 |         IMG_UINT32 ui32ItemsFreed = 0, ui32NullScpCount = 0, ui32PoolCount;
+      |                                        ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:2906:55: warning: variable 'ui32PoolCount' set but not used [-Wunused-but-set-variable]
+ 2906 |         IMG_UINT32 ui32ItemsFreed = 0, ui32NullScpCount = 0, ui32PoolCount;
+      |                                                              ^
+4 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/process_stats.c:1904:9: warning: variable 'eProcSearch' set but not used [-Wunused-but-set-variable]
+ 1904 |              } eProcSearch = PVRSRV_PROC_FOUND;
+      |                ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/mmu_common.c:2706:13: warning: variable 'ui32MappedCount' set but not used [-Wunused-but-set-variable]
+ 2706 |         IMG_UINT32 ui32MappedCount = 0;
+      |                    ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/mmu_common.c:2711:13: warning: variable 'uiDummyProtFlags' set but not used [-Wunused-but-set-variable]
+ 2711 |         IMG_UINT64 uiDummyProtFlags = 0;
+      |                    ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/mmu_common.c:3112:12: warning: variable 'pcBackingPageName' set but not used [-Wunused-but-set-variable]
+ 3112 |         IMG_CHAR *pcBackingPageName = NULL;
+      |                   ^
+3 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/pvrsrv.c:2458:34: warning: implicit conversion from enumeration type 'enum tag_img_bool' to different enumeration type 'POLL_FLAGS' (aka 'enum _POLL_FLAGS_') [-Wenum-conversion]
+ 2454 |                         eError = PVRSRVPollForValueKM(psDeviceNode,
+      |                                  ~~~~~~~~~~~~~~~~~~~~
+ 2455 |                                                       psSync->pui32LinAddr,
+ 2456 |                                                       psDeviceNode->ui32NextMMUInvalidateUpdate-1,
+ 2457 |                                                       0xFFFFFFFF,
+ 2458 |                                                       IMG_TRUE);
+      |                                                       ^~~~~~~~
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/htb_debug.c:150:13: warning: variable 'ui32DataSize' set but not used [-Wunused-but-set-variable]
+  150 |         IMG_UINT32      ui32DataSize;
+      |                         ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/htb_debug.c:151:13: warning: variable 'uiBufLen' set but not used [-Wunused-but-set-variable]
+  151 |         IMG_UINT32      uiBufLen;
+      |                         ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/htb_debug.c:841:13: warning: variable 'ui32DataSize' set but not used [-Wunused-but-set-variable]
+  841 |         IMG_UINT32      ui32DataSize;
+      |                         ^
+3 warnings generated.
+In file included from ../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/di_server.c:44:
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/server/include/osdi_impl.h:93:3: warning: redefinition of typedef 'OSDI_IMPL_ENTRY' is a C11 feature [-Wtypedef-redefinition]
+   93 | } OSDI_IMPL_ENTRY;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/server/include/di_common.h:54:32: note: previous definition is here
+   54 | typedef struct OSDI_IMPL_ENTRY OSDI_IMPL_ENTRY;
+      |                                ^
+1 warning generated.
+In file included from ../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_debugfs.c:74:
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/server/include/osdi_impl.h:93:3: warning: redefinition of typedef 'OSDI_IMPL_ENTRY' is a C11 feature [-Wtypedef-redefinition]
+   93 | } OSDI_IMPL_ENTRY;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/server/include/di_common.h:54:32: note: previous definition is here
+   54 | typedef struct OSDI_IMPL_ENTRY OSDI_IMPL_ENTRY;
+      |                                ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/osconnection_server.c:132:23: warning: variable 'psEnvConnection' set but not used [-Wunused-but-set-variable]
+  132 |         ENV_CONNECTION_DATA *psEnvConnection;
+      |                              ^
+1 warning generated.
+../drivers/input/touchscreen/ft8006s_spi/focaltech_ex_mode.c:287:22: warning: unused variable 'ts_data' [-Wunused-variable]
+  287 |         struct fts_ts_data *ts_data = fts_data;
+      |                             ^~~~~~~
+1 warning generated.
+../drivers/input/touchscreen/ft8006s_spi/focaltech_gesture.c:161:9: warning: unused variable 'i' [-Wunused-variable]
+  161 |     int i = 0;
+      |         ^
+../drivers/input/touchscreen/ft8006s_spi/focaltech_gesture.c:162:9: warning: unused variable 'index' [-Wunused-variable]
+  162 |     int index = 0;
+      |         ^~~~~
+2 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/osfunc.c:248:13: warning: variable 'uiSize' set but not used [-Wunused-but-set-variable]
+  248 |         IMG_UINT32      uiSize, uiPageCount=0, ui32Order;
+      |                         ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_gputrace.c:855:15: warning: variable 'ui32TlPackets' set but not used [-Wunused-but-set-variable]
+  855 |         IMG_UINT32                      ui32TlPackets = 0;
+      |                                         ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_gputrace.c:856:15: warning: variable 'ui32HWPerfPackets' set but not used [-Wunused-but-set-variable]
+  856 |         IMG_UINT32                      ui32HWPerfPackets = 0;
+      |                                         ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_gputrace.c:857:15: warning: variable 'ui32HWPerfPacketsSent' set but not used [-Wunused-but-set-variable]
+  857 |         IMG_UINT32                      ui32HWPerfPacketsSent = 0;
+      |                                         ^
+3 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_debug.c:337:17: warning: unused function 'BAppend' [-Wunused-function]
+  337 | static IMG_BOOL BAppend(IMG_CHAR *pszBuf, IMG_UINT32 ui32BufSiz, const IMG_CHAR *pszFormat, ...)
+      |                 ^~~~~~~
+1 warning generated.
+In file included from ../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_procfs.c:74:
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/server/include/osdi_impl.h:93:3: warning: redefinition of typedef 'OSDI_IMPL_ENTRY' is a C11 feature [-Wtypedef-redefinition]
+   93 | } OSDI_IMPL_ENTRY;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/server/include/di_common.h:54:32: note: previous definition is here
+   54 | typedef struct OSDI_IMPL_ENTRY OSDI_IMPL_ENTRY;
+      |                                ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_ion_stats.c:358:19: warning: unused function 'DefaultHashFunc' [-Wunused-function]
+  358 | static IMG_UINT32 DefaultHashFunc(uintptr_t input)
+      |                   ^~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_ion_stats.c:144:17: warning: unused function 'isIonBuf' [-Wunused-function]
+  144 | static IMG_BOOL isIonBuf(struct dma_buf *psDmaBuf)
+      |                 ^~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_ion_stats.c:152:19: warning: unused function 'pvr_ion_stats_query_heaps' [-Wunused-function]
+  152 | static IMG_UINT32 pvr_ion_stats_query_heaps(PVR_ION_STATS_HEAP *heaps,
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_ion_stats.c:262:1: warning: unused function 'ion_stats_init' [-Wunused-function]
+  262 | ion_stats_init(PVR_ION_STATS_HEAP *heaps, IMG_UINT32 ui32NumHeaps,
+      | ^~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/env/linux/pvr_ion_stats.c:322:27: warning: unused function 'GetBuf' [-Wunused-function]
+  322 | static PVR_ION_STATS_BUF *GetBuf(struct rb_root *root, uintptr_t addr)
+      |                           ^~~~~~
+5 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/shared/common/tlclient.c:120:13: warning: variable 'ui32MemFlags' set but not used [-Wunused-but-set-variable]
+  120 |         IMG_UINT32 ui32MemFlags = PVRSRV_MEMALLOCFLAG_CPU_READABLE;
+      |                    ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/kernel/drivers/staging/imgtec/pvr_fence.c:145:15: warning: variable 'fence_value_str' set but not used [-Wunused-but-set-variable]
+  145 |                 const char *fence_value_str = "unknown fence value";
+      |                             ^
+1 warning generated.
+-- KernelSU-Next version (GitHub): 12809
+-- KernelSU-Next version: 12809
+-- KernelSU-Next Manager signature size: 0x3e6
+-- KernelSU-Next Manager signature hash: 79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7
+-- KSU_NEXT: Neither atomic_inc_not_zero nor atomic_long_inc_not_zero found in kernel/cred.c
+-- KSU_NEXT: Using  in get_cred_rcu patch.
+..
+FDVT: Drv use 4.0 folder
+..
+../drivers/misc/mediatek/ccu/src/Makefile:25: CCU_MAKE_FILE_CALLED
+../drivers/misc/mediatek/ccu/src/1.2/Makefile:28: CCU_INC=../drivers/misc/mediatek/ccu/src/mt6765/ccu_ext_interface
+$CONFIG_MTK_COMBO_CHIP is ["CONSYS_6765"]
+MTK_PLATFORM_ID is [6765]
+../drivers/misc/mediatek/connectivity/common/Makefile:109: wmt_drv build-in boot.img
+CONFIG_MTK_PLATFORM := mt6765
+CONFIG_MTK_PLATFORM := "mt6765"
+MTK_PLATFORM := mt6765
+CONFIG_MTK_PLATFORM := mt6765
+CONFIG_MTK_PLATFORM := "mt6765"
+MTK_PLATFORM := mt6765
+../drivers/misc/mediatek/connectivity/wlan/adaptor/Makefile:42: wmt_chrdev_wifi build-in boot.img
+os option: linux
+$MTK_PLATFORM is [mt6765]
+$WLAN_CHIP_ID is [6765]
+$MTK_COMBO_CHIP is [CONNAC]
+../drivers/misc/mediatek/connectivity/wlan/core/gen4m/Makefile:208: Излишний текст после директивы «else»
+../drivers/misc/mediatek/connectivity/wlan/core/gen4m/Makefile:444: wlan_drv_gen4m build-in boot.img
+SERVICE_DIR is [{}]
+$CCFLAG is [{-Wno-unused-variable -Wno-unused-value -Wno-unused-result -Wno-format -Wno-parentheses -UMT6620 -UMT6628 -UMT5931 -UMT6630 -UMT6632 -UMT7663 -UCONNAC2X2 -UUT_TEST_MODE -UMT7915 -USOC3_0 -UMT7961 -DCONFIG_MTK_EMI=1 -DCFG_SUPPORT_DEBUG_FS=0 -DWLAN_INCLUDE_PROC -DCFG_SUPPORT_AGPS_ASSIST=0 -DCFG_SUPPORT_TSF_USING_BOOTTIME=1 -DARP_MONITER_ENABLE=1 -Werror -DLINUX -DCONNAC -DCFG_ANDORID_CONNINFRA_SUPPORT=0 -DCFG_ENABLE_HOST_BUS_TIMEOUT=0 -DCFG_SUPPORT_CONNAC2X=0 -DCFG_SUPPORT_CONNAC2X_2x2=0 -DCFG_SUPPORT_802_11AX=0 -DCFG_SUPPORT_TWT=0 -DCFG_TWT_SMART_STA=0 -DCFG_DRIVER_INITIAL_RUNNING_MODE=3 -DCFG_MOT_REM_CH12_CH13 -DCFG_SUPPORT_DUAL_STA=0 -DCFG_MTK_ANDROID_WMT=1 -DCFG_SUPPORT_CONNINFRA=0 -DCFG_ANDORID_CONNINFRA_COREDUMP_SUPPORT=0 -DCFG_SUPPORT_PRE_ON_PHY_ACTION=0 -I../drivers/misc/mediatek/connectivity/common/common_main/include -I../drivers/misc/mediatek/connectivity/common/common_main/linux/include -DWMT_IDC_SUPPORT=1 -DMTK_WCN_WMT_STP_EXP_SYMBOL_ABSTRACT -DCFG_MTK_ANDROID_EMI=1 -DCFG_WIFI_IP_SET=1 -DCFG_BUILT_IN_DRIVER=1 -DCFG_SUPPORT_CHNL_CONFLICT_REVISE=0 -DCFG_SUPPORT_AEE=0 -DBUILD_QA_DBG=0 -DCFG_WPS_DISCONNECT=1 -D_HIF_AXI=1 -DCFG_SUPPORT_PASSPOINT=0 -DCFG_HS20_DEBUG=0 -DCFG_ENABLE_GTK_FRAME_FILTER=0 -DCFG_MET_PACKET_TRACE_SUPPORT=0 -DCFG_MET_TAG_SUPPORT=0 -DCFG_TC3_FEATURE=0 -DCFG_TC10_FEATURE=0 -DCFG_TC1_FEATURE=0 -DDBG=0 -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/os -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/os/linux/include -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/include -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/include/nic -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/include/mgmt -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/include/chips -I../drivers/misc/mediatek/base/power/include/ -I../drivers/misc/mediatek/include/mt-plat/ -I../drivers/misc/mediatek/performance/include/ -I../drivers/misc/mediatek/emi/mt6765 -I../drivers/misc/mediatek/emi/submodule -I../drivers/misc/mediatek/connectivity/common -I../drivers/devfreq/ -I../net -DCFG_MTK_MCIF_WIFI_SUPPORT=0 -DCFG_MTK_MDDP_WH_SUPPORT=0 -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/os/linux/hif/common/include -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/os/linux/hif/axi/include -DCONFIG_WLAN_DRV_BUILD_IN=1 -DCONFIG_WLAN_SERVICE=1 -DCONFIG_TEST_ENGINE_OFFLOAD=1 -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/wlan_service/include -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/wlan_service/service/include -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/wlan_service/glue/osal/include -Idrivers/misc/mediatek/connectivity/wlan/core/gen4m/wlan_service/glue/hal/include}]
+$MTK_WLAN_SERVICE is [{wlan_service/agent/agent.o wlan_service/service/service_test.o wlan_service/service/test_engine.o wlan_service/glue/osal/gen4m/sys_adaption_gen4m.o wlan_service/glue/osal/gen4m/net_adaption_gen4m.o wlan_service/glue/hal/gen4m/operation_gen4m.o}]
+../drivers/power/supply/bq2560x_charger.c:352:12: warning: unused function 'bq2560x_enable_term' [-Wunused-function]
+  352 | static int bq2560x_enable_term(struct bq2560x* bq, bool enable)
+      |            ^~~~~~~~~~~~~~~~~~~
+../drivers/power/supply/bq2560x_charger.c:440:12: warning: unused function 'bq2560x_enable_batfet' [-Wunused-function]
+  440 | static int bq2560x_enable_batfet(struct bq2560x *bq)
+      |            ^~~~~~~~~~~~~~~~~~~~~
+../drivers/power/supply/bq2560x_charger.c:450:12: warning: unused function 'bq2560x_disable_batfet' [-Wunused-function]
+  450 | static int bq2560x_disable_batfet(struct bq2560x *bq)
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+../drivers/power/supply/bq2560x_charger.c:459:12: warning: unused function 'bq2560x_set_batfet_delay' [-Wunused-function]
+  459 | static int bq2560x_set_batfet_delay(struct bq2560x *bq, uint8_t delay)
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~
+4 warnings generated.
+/bin/sh: строка 1: ld.lld: command not found
+make[6]: *** [../scripts/Makefile.build:609: drivers/misc/mediatek/fpsgo_cus/fpsgo.o] Ошибка 127
+make[5]: *** [../scripts/Makefile.build:639: drivers/misc/mediatek/fpsgo_cus] Ошибка 2
+make[5]: *** Ожидание завершения заданий…
+../drivers/soc/mediatek/mtk-pmic-wrap.c:1761:16: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+ 1761 |         .slv_switch = 1,
+      |                       ^
+1 warning generated.
+ION:enable mtk ion
+"CONFIG_MICROTRUST_TEE_VERSION="300""
+"CONFIG_MICROTRUST_TEE_SUPPORT=y"
+"CONFIG_MICROTRUST_TZ_DRIVER=y"
+"CONFIG_MICROTRUST_VFS_DRIVER=y"
+"CONFIG_MICROTRUST_FP_DRIVER=y"
+"CONFIG_MICROTRUST_DEBUG="
+"CONFIG_MICROTRUST_TEST_DRIVERS="
+../drivers/staging/android/mtk_ion/mtk/ion_mm_heap.c:2043:26: warning: comparison of different enumeration types ('enum ion_heap_type' and 'enum mtk_ion_heap_type') [-Wenum-compare]
+ 2043 |                 } else if (buffer_type == ION_HEAP_TYPE_MULTIMEDIA_SEC) {
+      |                            ~~~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+../drivers/staging/android/mtk_ion/ion.c:190:17: warning: comparison of different enumeration types ('enum ion_heap_type' and 'enum mtk_ion_heap_type') [-Wenum-compare]
+  190 |         if (heap->type == ION_HEAP_TYPE_MULTIMEDIA_SEC)
+      |             ~~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../drivers/staging/android/mtk_ion/ion.c:796:12: warning: unused function 'ion_client_validate' [-Wunused-function]
+  796 | static int ion_client_validate(struct ion_device *dev,
+      |            ^~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+../drivers/tee/teei/300/tz_driver/teei_client_main.c:61:6: warning: 'CONFIG_MTPROF' is not defined, evaluates to 0 [-Wundef]
+   61 | #if (CONFIG_MTPROF)
+      |      ^
+../drivers/tee/teei/300/tz_driver/teei_client_main.c:195:23: warning: unused variable 'mask' [-Wunused-variable]
+  195 | static struct cpumask mask = { CPU_BITS_NONE };
+      |                       ^~~~
+2 warnings generated.
+../drivers/tee/teei/300/tz_driver/tz_log.c:100:12: warning: unused function 'log_read_line' [-Wunused-function]
+  100 | static int log_read_line(struct tz_log_state *s, int put, int get)
+      |            ^~~~~~~~~~~~~
+../drivers/tee/teei/300/tz_driver/tz_log.c:116:13: warning: unused function 'tz_driver_dump_logs' [-Wunused-function]
+  116 | static void tz_driver_dump_logs(struct tz_log_state *s)
+      |             ^~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+../drivers/tee/teei/300/tz_driver/switch_queue.c:39:9: warning: 'IMSG_TAG' macro redefined [-Wmacro-redefined]
+   39 | #define IMSG_TAG "[tz_driver]"
+      |         ^
+../drivers/tee/teei/300/common/include/imsg_log.h:12:9: note: previous definition is here
+   12 | #define IMSG_TAG "[ISEE DRV]"
+      |         ^
+1 warning generated.
+../drivers/usb/gadget/function/f_accessory.c:270:20: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+  270 |         dev->disconnected = 1;
+      |                           ^ ~
+../drivers/usb/gadget/function/f_accessory.c:773:25: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+  773 |         _acc_dev->disconnected = 1;
+      |                                ^ ~
+../drivers/usb/gadget/function/f_accessory.c:1172:14: warning: implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1 [-Wsingle-bit-bitfield-constant-conversion]
+ 1172 |         dev->online = 1;
+      |                     ^ ~
+3 warnings generated.
+make[4]: *** [../scripts/Makefile.build:639: drivers/misc/mediatek] Ошибка 2
+make[3]: *** [../scripts/Makefile.build:639: drivers/misc] Ошибка 2
+make[2]: *** [/home/artur/niigo_kernel_xiaomi_blossom/Makefile:1181: drivers] Ошибка 2
+make[1]: *** [Makefile:146: sub-make] Ошибка 2
+make: *** [Makefile:24: __sub-make] Ошибка 2
+
+real	29m23,257s
+user	93m7,635s
+sys	6m20,598s

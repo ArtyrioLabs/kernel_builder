@@ -1,0 +1,342 @@
+Using kernel name: niigo_kernel_ksu-next_829748
+Checking dependencies...
+Cleaning previous build...
+Applying patches from: /home/artur/niigo_kernel_xiaomi_blossom/kernel_builder/patches
+Applying: 0001-fs-exec-add-ksu-execveat-hook.patch
+Already applied: 0001-fs-exec-add-ksu-execveat-hook.patch
+Applying: 0002-fs-open-add-ksu-faccessat-hook.patch
+Already applied: 0002-fs-open-add-ksu-faccessat-hook.patch
+Applying: 0003-fs-read_write-add-ksu-vfs_read-hook.patch
+Already applied: 0003-fs-read_write-add-ksu-vfs_read-hook.patch
+Applying: 0004-fs-stat-add-ksu-vfs_statx-hook.patch
+Already applied: 0004-fs-stat-add-ksu-vfs_statx-hook.patch
+Applying: 0005-drivers-input-input-add-ksu-input_handle_event-hook.patch
+Already applied: 0005-drivers-input-input-add-ksu-input_handle_event-hook.patch
+Configuring kernel...
+CONFIG_LOCALVERSION set to: CONFIG_LOCALVERSION="-niigo_kernel_ksu-next_829748"
+Optimizing config...
+Building kernel with 4 cores...
+scripts/kconfig/conf -s --syncconfig Kconfig
+for i in ../arch/arm64/boot/dts/mediatek/dandelion.dts; do \
+	base_prj=`grep -m 1 '#include [<\"].*\/cust\.dtsi[>\"]' $i | sed 's/#include [<"]//g'\
+       	| sed 's/\/cust\.dtsi[>"]//g' | sed 's/\/\*//g' | sed 's/\*\///g' | sed 's/ //g'`\
+	prj_path=./arch/arm64/boot/dts/$base_prj ;\
+	dws_path=../drivers/misc/mediatek/dws/mt6765/$base_prj.dws ;\
+	if [ -f $dws_path ] ; then \
+		mkdir -p $prj_path ;\
+		 ../tools/dct/DrvGen.py $dws_path $prj_path $prj_path cust_dtsi;\
+	fi \
+done
+for i in ../arch/arm64/boot/dts/mediatek/dandelion.dts; do \
+	base_prj=`grep -m 1 '#include [<\"].*\/cust\.dtsi[>\"]' $i | sed 's/#include [<"]//g'\
+       	| sed 's/\/cust\.dtsi[>"]//g' | sed 's/\/\*//g' | sed 's/\*\///g' | sed 's/ //g'`\
+	prj_path=./arch/arm64/boot/dts/$base_prj ;\
+	dws_path=../drivers/misc/mediatek/dws/mt6765/$base_prj.dws ;\
+	if [ -f $dws_path ] ; then \
+		mkdir -p $prj_path ;\
+		 ../tools/dct/DrvGen.py $dws_path $prj_path $prj_path cust_dtsi;\
+	fi \
+done
+grep: предупреждение: stray \ before /
+grep: предупреждение: stray \ before /
+rm -f dtboimg.cfg.tmp
+echo /home/artur/niigo_kernel_xiaomi_blossom/out/arch/arm64/boot/dts/mediatek/dandelion.dtb >>dtboimg.cfg.tmp; echo " id=0" >>dtboimg.cfg.tmp; 
+touch dtboimg.cfg.tmp
+if ! cmp -s dtboimg.cfg.tmp dtboimg.cfg; then \
+	mv dtboimg.cfg.tmp dtboimg.cfg; \
+else \
+	rm dtboimg.cfg.tmp; \
+fi
+rm -f dtbimg.cfg.tmp
+echo /home/artur/niigo_kernel_xiaomi_blossom/out/arch/arm64/boot/mtk.dtb >>dtbimg.cfg.tmp; echo " id=0" >>dtbimg.cfg.tmp; 
+touch dtbimg.cfg.tmp
+if ! cmp -s dtbimg.cfg.tmp dtbimg.cfg; then \
+	mv dtbimg.cfg.tmp dtbimg.cfg; \
+else \
+	rm dtbimg.cfg.tmp; \
+fi
+../scripts/extract-cert.c:46:14: warning: 'ERR_get_error_line' is deprecated [-Wdeprecated-declarations]
+   46 |         while ((e = ERR_get_error_line(&file, &line))) {
+      |                     ^
+/usr/include/openssl/err.h:422:1: note: 'ERR_get_error_line' has been explicitly marked deprecated here
+  422 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:59:9: warning: 'ERR_get_error_line' is deprecated [-Wdeprecated-declarations]
+   59 |         while (ERR_get_error_line(&file, &line)) {}
+      |                ^
+/usr/include/openssl/err.h:422:1: note: 'ERR_get_error_line' has been explicitly marked deprecated here
+  422 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:124:3: warning: 'ENGINE_load_builtin_engines' is deprecated [-Wdeprecated-declarations]
+  124 |                 ENGINE_load_builtin_engines();
+      |                 ^
+/usr/include/openssl/engine.h:358:1: note: 'ENGINE_load_builtin_engines' has been explicitly marked deprecated here
+  358 | OSSL_DEPRECATEDIN_3_0 void ENGINE_load_builtin_engines(void);
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:126:7: warning: 'ENGINE_by_id' is deprecated [-Wdeprecated-declarations]
+  126 |                 e = ENGINE_by_id("pkcs11");
+      |                     ^
+/usr/include/openssl/engine.h:336:1: note: 'ENGINE_by_id' has been explicitly marked deprecated here
+  336 | OSSL_DEPRECATEDIN_3_0 ENGINE *ENGINE_by_id(const char *id);
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:128:7: warning: 'ENGINE_init' is deprecated [-Wdeprecated-declarations]
+  128 |                 if (ENGINE_init(e))
+      |                     ^
+/usr/include/openssl/engine.h:620:1: note: 'ENGINE_init' has been explicitly marked deprecated here
+  620 | OSSL_DEPRECATEDIN_3_0 int ENGINE_init(ENGINE *e);
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:133:9: warning: 'ENGINE_ctrl_cmd_string' is deprecated [-Wdeprecated-declarations]
+  133 |                         ERR(!ENGINE_ctrl_cmd_string(e, "PIN", key_pass, 0), "Set PKCS#11 PIN");
+      |                              ^
+/usr/include/openssl/engine.h:478:1: note: 'ENGINE_ctrl_cmd_string' has been explicitly marked deprecated here
+  478 | OSSL_DEPRECATEDIN_3_0
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+../scripts/extract-cert.c:134:3: warning: 'ENGINE_ctrl_cmd' is deprecated [-Wdeprecated-declarations]
+  134 |                 ENGINE_ctrl_cmd(e, "LOAD_CERT_CTRL", 0, &parms, NULL, 1);
+      |                 ^
+/usr/include/openssl/engine.h:450:1: note: 'ENGINE_ctrl_cmd' has been explicitly marked deprecated here
+  450 | OSSL_DEPRECATEDIN_3_0 int ENGINE_ctrl_cmd(ENGINE *e, const char *cmd_name,
+      | ^
+/usr/include/openssl/macros.h:217:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+  217 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+      |                                                 ^
+/usr/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+   62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+      |                                                    ^
+7 warnings generated.
+../fs/kernfs/file.c:273:16: warning: stack frame size (4176) exceeds limit (2800) in 'kernfs_fop_write' [-Wframe-larger-than]
+  273 | static ssize_t kernfs_fop_write(struct file *file, const char __user *user_buf,
+      |                ^
+1 warning generated.
+../fs/read_write.c:446:10: warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+  446 |         ssize_t ret;
+      |                 ^
+1 warning generated.
+../fs/exec.c:1743:8: warning: mixing declarations and code is a C99 extension [-Wdeclaration-after-statement]
+ 1743 |         char *pathbuf = NULL;
+      |               ^
+1 warning generated.
+../fs/namespace.c:3037:3: warning: misleading indentation; statement is not part of the previous 'if' [-Wmisleading-indentation]
+ 3037 |                 mnt_flags |= MNT_NOATIME;
+      |                 ^
+../fs/namespace.c:3034:2: note: previous statement is here
+ 3034 |         if (flags & MS_NOEXEC)
+      |         ^
+1 warning generated.
+../drivers/cpuidle/governors/mtk_menu.c:52:16: warning: unused variable 'flags' [-Wunused-variable]
+   52 |         unsigned long flags = 0;
+      |                       ^~~~~
+../drivers/cpuidle/governors/mtk_menu.c:80:16: warning: unused variable 'flags' [-Wunused-variable]
+   80 |         unsigned long flags = 0;
+      |                       ^~~~~
+../drivers/cpuidle/governors/mtk_menu.c:712:16: warning: unused variable 'flags' [-Wunused-variable]
+  712 |         unsigned long flags = 0;
+      |                       ^~~~~
+3 warnings generated.
+../fs/d_path.c:419:1: warning: stack frame size (4224) exceeds limit (2800) in '__arm64_sys_getcwd' [-Wframe-larger-than]
+  419 | SYSCALL_DEFINE2(getcwd, char __user *, buf, unsigned long, size)
+      | ^
+../include/linux/syscalls.h:215:36: note: expanded from macro 'SYSCALL_DEFINE2'
+  215 | #define SYSCALL_DEFINE2(name, ...) SYSCALL_DEFINEx(2, _##name, __VA_ARGS__)
+      |                                    ^
+../include/linux/syscalls.h:225:2: note: expanded from macro 'SYSCALL_DEFINEx'
+  225 |         __SYSCALL_DEFINEx(x, sname, __VA_ARGS__)
+      |         ^
+../arch/arm64/include/asm/syscall_wrapper.h:56:18: note: expanded from macro '__SYSCALL_DEFINEx'
+   56 |         asmlinkage long __arm64_sys##name(const struct pt_regs *regs)           \
+      |                         ^
+<scratch space>:84:1: note: expanded from here
+   84 | __arm64_sys_getcwd
+      | ^
+1 warning generated.
+../fs/binfmt_elf.c:709:12: warning: stack frame size (4448) exceeds limit (2800) in 'load_elf_binary' [-Wframe-larger-than]
+  709 | static int load_elf_binary(struct linux_binprm *bprm)
+      |            ^
+1 warning generated.
+In file included from ../fs/compat_binfmt_elf.c:131:
+../fs/binfmt_elf.c:709:12: warning: stack frame size (4432) exceeds limit (2800) in 'load_elf_binary' [-Wframe-larger-than]
+  709 | static int load_elf_binary(struct linux_binprm *bprm)
+      |            ^
+1 warning generated.
+../drivers/gpu/mediatek/ged/src/ged_notify_sw_vsync.c:61:33: warning: unused variable 'g_psDumpFW' [-Wunused-variable]
+   61 | static struct workqueue_struct *g_psDumpFW;
+      |                                 ^~~~~~~~~~
+1 warning generated.
+../net/core/filter.c:2835:12: warning: unused function '__bpf_skb_max_len' [-Wunused-function]
+ 2835 | static u32 __bpf_skb_max_len(const struct sk_buff *skb)
+      |            ^~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/ged/src/ged_kpi.c:48:9: warning: 'GED_TAG' macro redefined [-Wmacro-redefined]
+   48 | #define GED_TAG "[GED_KPI]"
+      |         ^
+../drivers/gpu/mediatek/ged/include/ged_base.h:12:9: note: previous definition is here
+   12 | #define GED_TAG "[GPU/GED]"
+      |         ^
+1 warning generated.
+1 warning generated.
+In file included from ../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:10:
+../drivers/gpu/mediatek/gpufreq/include/mtk_gpufreq.h:38:16: warning: redefinition of typedef 'gpufreq_power_limit_notify' is a C11 feature [-Wtypedef-redefinition]
+   38 | typedef void (*gpufreq_power_limit_notify)(unsigned int); /* legacy */
+      |                ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.h:73:16: note: previous definition is here
+   73 | typedef void (*gpufreq_power_limit_notify)(unsigned int);
+      |                ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:216:6: warning: variable 'buck_state' set but not used [-Wunused-but-set-variable]
+  216 |         int buck_state;
+      |             ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:84:19: warning: unused variable 'gpu_bottom_freq' [-Wunused-variable]
+   84 | static IMG_UINT32 gpu_bottom_freq;
+      |                   ^~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:86:19: warning: unused variable 'gpu_cust_boost_freq' [-Wunused-variable]
+   86 | static IMG_UINT32 gpu_cust_boost_freq;
+      |                   ^~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:88:19: warning: unused variable 'gpu_cust_upbound_freq' [-Wunused-variable]
+   88 | static IMG_UINT32 gpu_cust_upbound_freq;
+      |                   ^~~~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:93:19: warning: unused variable 'gpu_dvfs_force_idle' [-Wunused-variable]
+   93 | static IMG_UINT32 gpu_dvfs_force_idle;
+      |                   ^~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:97:19: warning: unused variable 'gpu_loading' [-Wunused-variable]
+   97 | static IMG_UINT32 gpu_loading;
+      |                   ^~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:98:19: warning: unused variable 'gpu_block' [-Wunused-variable]
+   98 | static IMG_UINT32 gpu_block;
+      |                   ^~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:99:19: warning: unused variable 'gpu_idle' [-Wunused-variable]
+   99 | static IMG_UINT32 gpu_idle;
+      |                   ^~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:374:13: warning: unused function 'MTKFreqInputBoostCB' [-Wunused-function]
+  374 | static void MTKFreqInputBoostCB(unsigned int ui32BoostFreqID)
+      |             ^~~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:568:17: warning: unused function 'MTKGpuDVFSPolicy' [-Wunused-function]
+  568 | static IMG_BOOL MTKGpuDVFSPolicy(IMG_UINT32 ui32GPULoading,
+      |                 ^~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:762:13: warning: unused function 'MTKFakeGpuLoading' [-Wunused-function]
+  762 | static void MTKFakeGpuLoading(unsigned int *pui32Loading,
+      |             ^~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:937:19: warning: unused function 'mtk_mfg_async_init' [-Wunused-function]
+  937 | static int __init mtk_mfg_async_init(void)
+      |                   ^~~~~~~~~~~~~~~~~~
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/rgx_mtk/mt6765/mtk_mfgsys.c:947:19: warning: unused function 'mtk_mfg_2d_init' [-Wunused-function]
+  947 | static int __init mtk_mfg_2d_init(void)
+      |                   ^~~~~~~~~~~~~~~
+14 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/system/rogue/common/env/linux/dma_support.c:400:9: warning: variable 'uiSize' set but not used [-Wunused-but-set-variable]
+  400 |         size_t uiSize;
+      |                ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxhwperf.c:3618:15: warning: variable 'ui32TlPackets' set but not used [-Wunused-but-set-variable]
+ 3618 |         IMG_UINT32                      ui32TlPackets = 0;
+      |                                         ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxmem.c:85:3: warning: redefinition of typedef 'SERVER_MMU_CONTEXT' is a C11 feature [-Wtypedef-redefinition]
+   85 | } SERVER_MMU_CONTEXT;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxmem.h:67:37: note: previous definition is here
+   67 | typedef struct _SERVER_MMU_CONTEXT_ SERVER_MMU_CONTEXT;
+      |                                     ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxccb.c:2482:19: warning: variable 'pvPtr' set but not used [-Wunused-but-set-variable]
+ 2482 |         volatile void                   *pvPtr;
+      |                                          ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxlayer_impl.c:743:11: warning: variable 'bSubTestPassed' set but not used [-Wunused-but-set-variable]
+  743 |         IMG_BOOL bSubTestPassed = IMG_FALSE;
+      |                  ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxtdmtransfer.c:489:13: warning: variable 'ui32CmdOffset' set but not used [-Wunused-but-set-variable]
+  489 |         IMG_UINT32 ui32CmdOffset = 0;
+      |                    ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxta3d.c:1762:22: warning: variable 'psDevInfo' set but not used [-Wunused-but-set-variable]
+ 1762 |         PVRSRV_RGXDEV_INFO *psDevInfo;
+      |                             ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxta3d.c:4143:22: warning: variable 'pauiClientTAIntUpdateUFOAddress' set but not used [-Wunused-but-set-variable]
+ 4143 |                 PRGXFWIF_UFO_ADDR       *pauiClientTAIntUpdateUFOAddress = NULL;
+      |                                          ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxta3d.c:4144:22: warning: variable 'pauiClient3DIntUpdateUFOAddress' set but not used [-Wunused-but-set-variable]
+ 4144 |                 PRGXFWIF_UFO_ADDR       *pauiClient3DIntUpdateUFOAddress = NULL;
+      |                                          ^
+3 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxsrvinit.c:305:32: warning: variable 'bAXIACELite' set but not used [-Wunused-but-set-variable]
+  305 |         IMG_BOOL bE42606 = IMG_FALSE, bAXIACELite = IMG_FALSE;
+      |                                       ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/devices/rogue/rgxsrvinit.c:1278:11: warning: variable 'bAnyLogGroupConfigured' set but not used [-Wunused-but-set-variable]
+ 1278 |         IMG_BOOL bAnyLogGroupConfigured;
+      |                  ^
+2 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/devicemem_history_server.c:671:21: warning: variable 'psAlloc' set but not used [-Wunused-but-set-variable]
+  671 |         RECORD_ALLOCATION *psAlloc;
+      |                            ^
+1 warning generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:181:3: warning: redefinition of typedef '_SYNC_CHECKPOINT_CONTEXT_CTL' is a C11 feature [-Wtypedef-redefinition]
+  181 | } _SYNC_CHECKPOINT_CONTEXT_CTL;
+      |   ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728//services/include/sync_checkpoint_internal.h:65:46: note: previous definition is here
+   65 | typedef struct _SYNC_CHECKPOINT_CONTEXT_CTL_ _SYNC_CHECKPOINT_CONTEXT_CTL, *_PSYNC_CHECKPOINT_CONTEXT_CTL;
+      |                                              ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:1098:11: warning: variable 'iRf2' set but not used [-Wunused-but-set-variable]
+ 1098 |                 IMG_INT iRf2 = 0;
+      |                         ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:2906:33: warning: variable 'ui32NullScpCount' set but not used [-Wunused-but-set-variable]
+ 2906 |         IMG_UINT32 ui32ItemsFreed = 0, ui32NullScpCount = 0, ui32PoolCount;
+      |                                        ^
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/sync_checkpoint.c:2906:55: warning: variable 'ui32PoolCount' set but not used [-Wunused-but-set-variable]
+ 2906 |         IMG_UINT32 ui32ItemsFreed = 0, ui32NullScpCount = 0, ui32PoolCount;
+      |                                                              ^
+4 warnings generated.
+../drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/process_stats.c:1904:9: warning: variable 'eProcSearch' set but not used [-Wunused-but-set-variable]
+ 1904 |              } eProcSearch = PVRSRV_PROC_FOUND;
+      |                ^
+1 warning generated.
+make[7]: *** [../scripts/Makefile.build:335: drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728/services/server/common/connection_server.o] Прерывание
+make[4]: *** [../scripts/Makefile.build:335: net/ipv4/protocol.o] Прерывание
+make[5]: *** [../scripts/Makefile.build:335: net/ipv6/netfilter/nf_reject_ipv6.o] Прерывание
+make[3]: *** [../scripts/Makefile.build:335: lib/pci_iomap.o] Прерывание
+make[6]: *** [../scripts/Makefile.build:639: drivers/gpu/mediatek/gpu_rgx/m1.13ED5776728] Прерывание
+make[3]: *** [../scripts/Makefile.build:639: net/ipv4] Прерывание
+make[5]: *** [../scripts/Makefile.build:639: drivers/gpu/mediatek/gpu_rgx] Прерывание
+make[2]: *** [/home/artur/niigo_kernel_xiaomi_blossom/Makefile:1181: lib] Прерывание
+make[4]: *** [../scripts/Makefile.build:639: net/ipv6/netfilter] Прерывание
+make[3]: *** [../scripts/Makefile.build:639: net/ipv6] Прерывание
+make[4]: *** [../scripts/Makefile.build:639: drivers/gpu/mediatek] Прерывание
+make[2]: *** [/home/artur/niigo_kernel_xiaomi_blossom/Makefile:1181: net] Прерывание
+make[3]: *** [../scripts/Makefile.build:639: drivers/gpu] Прерывание
+make[2]: *** [/home/artur/niigo_kernel_xiaomi_blossom/Makefile:1181: drivers] Прерывание
+make[1]: *** [Makefile:146: sub-make] Прерывание
+make: *** [Makefile:24: __sub-make] Прерывание

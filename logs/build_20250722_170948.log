@@ -1,0 +1,11 @@
+Using kernel name: niigo_kernel_ksu-next_829748
+Checking dependencies...
+Cleaning previous build...
+Applying patches from: /home/artur/niigo_kernel_xiaomi_blossom/kernel_builder/patches
+Applying: 0001-fs-exec-add-ksu-execveat-hook.patch
+Already applied: 0001-fs-exec-add-ksu-execveat-hook.patch
+Applying: 0002-fs-open-add-ksu-faccessat-hook.patch
+Already applied: 0002-fs-open-add-ksu-faccessat-hook.patch
+Applying: 0003-fs-read_write-add-ksu-vfs_read-hook.patch
+Already applied: 0003-fs-read_write-add-ksu-vfs_read-hook.patch
+Applying: 0004-fs-stat-add-ksu-vfs_statx-hook.patch
