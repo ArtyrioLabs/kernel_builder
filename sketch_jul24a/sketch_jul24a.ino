@@ -43,7 +43,6 @@ void setup() {
   digitalWrite(buzzerPin, LOW);
   digitalWrite(ledPin, HIGH);
   
-  // SD-карта через SdFat
   if (!SD.begin(SD_CS_PIN)) {
     lcd.clear();
     lcd.print("SD init failed!");
@@ -393,7 +392,7 @@ void autoCleanLogs() {
   uint32_t freeClusters = SD.vol()->freeClusterCount();
   uint32_t sectorsPerCluster = SD.vol()->sectorsPerCluster();
   uint64_t freeBytes = (uint64_t)freeClusters * sectorsPerCluster * 512;
-  if (freeBytes < 1024*1024) { // если меньше 1 МБ свободно
+  if (freeBytes < 1024*1024) { 
     SD.remove(logFileName.c_str());
   }
 }
