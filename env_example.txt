@@ -1,0 +1,12 @@
+# Настройки Telegram бота
+BOT_TOKEN=your_telegram_bot_token_here
+CHAT_ID=your_chat_id_here
+
+# Настройки ESP8266 (опционально)
+ESP_IP=192.168.1.100
+ESP_ENABLED=false
+
+# Примечания:
+# ESP_ENABLED=false - ESP8266 отключен, бот работает автономно
+# ESP_ENABLED=true - ESP8266 включен, бот использует ESP8266 для отображения статуса
+# ESP_IP - IP-адрес ESP8266 (используется только если ESP_ENABLED=true) 

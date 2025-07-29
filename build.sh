@@ -1,6 +1,12 @@
 #!/bin/bash
 set -euo pipefail
 
+BUILD_START_TS=$(date '+%Y-%m-%d %H:%M:%S')
+echo "[build.sh] Build started at: $BUILD_START_TS"
+
+trap 'code=$?; BUILD_END_TS=$(date "+%Y-%m-%d %H:%M:%S"); echo "[build.sh] Build failed at: $BUILD_END_TS (exit code $code)"; exit $code' ERR
+trap 'BUILD_END_TS=$(date "+%Y-%m-%d %H:%M:%S"); echo "[build.sh] Build finished at: $BUILD_END_TS"' EXIT
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 KERNEL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 OUT_DIR="${KERNEL_DIR}/out"
@@ -25,6 +31,10 @@ else
     KSU_ver="none"
     kernel_name="${kernel_base_name}_no_ksu_$(date +%Y%m%d)"
 fi
+
+echo "KSU version: $KSU_ver"
+echo "SUSFS version: 1.5.5"
+echo "Starting kernel module build for: $kernel_name"
 
 echo "Using kernel name: $kernel_name"
 
